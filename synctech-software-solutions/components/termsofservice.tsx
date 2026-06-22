@@ -434,15 +434,6 @@ export default function TermsOfService() {
                   Contact Us
                 </motion.a>
 
-                <motion.a
-                  href="mailto:info@synctechn.com"
-                  whileHover={{ scale: 1.05 }}
-                  whileTap={{ scale: 0.95 }}
-                  className="inline-flex items-center justify-center px-8 py-4 rounded-full border border-slate-300 text-slate-700 font-semibold bg-white"
-                >
-                  Email Us
-                </motion.a>
-
               </div>
 
             </div>

@@ -1,59 +1,91 @@
 import React from 'react';
-import { Terminal } from 'lucide-react';
+import { Facebook, Instagram, Mail } from 'lucide-react';
 import { NAV_ITEMS } from '../constants';
 
 const Footer: React.FC = () => {
   return (
-    <footer className="bg-slate-50 text-slate-500 py-16 border-t border-slate-200">
-      <div className="container mx-auto px-4">
-        <div className="grid grid-cols-1 md:grid-cols-4 gap-12 mb-12">
+    <footer className="relative bg-[#111111] mt-20 pt-12 pb-0 overflow-hidden font-sans">
+      <div className="container relative z-10 mx-auto px-6 max-w-7xl">
+        <div className="flex flex-col md:flex-row justify-between items-start gap-12 lg:gap-16 mb-8">
           
-          <div className="col-span-1 md:col-span-1">
-            <div className="flex items-center gap-2 mb-6">
-              <div className="bg-primary-600 p-2 rounded-lg text-white">
-                <Terminal size={20} />
-              </div>
-              <span className="text-xl font-bold text-slate-900">SyncTech</span>
-            </div>
-            <p className="text-sm leading-relaxed mb-6">
+          {/* Left Side: Brand and Description */}
+          <div className="flex-1 max-w-xs">
+            <div className="text-white font-extrabold text-3xl tracking-tight mb-2">SyncTechn</div>
+            <p className="text-sm leading-relaxed text-slate-400 font-medium">
               We help ambitious businesses scale through world-class technology solutions.
             </p>
-            <div className="text-sm">
-              &copy; {new Date().getFullYear()} SyncTech Software Solutions. <br /> All rights reserved.
+          </div>
+
+          {/* Right Side: Link Columns */}
+          <div className="flex-[2] grid grid-cols-2 md:grid-cols-4 gap-6 w-full">
+            {/* Column 1: Services */}
+            <div>
+              <h4 className="text-white font-medium text-base mb-4">Services</h4>
+              <ul className="space-y-3 text-sm font-medium text-slate-400">
+                <li><a href="/services/mobiledevelopment" className="transition-colors duration-300 hover:text-blue-400">Mobile Development</a></li>
+                <li><a href="/services/webdevelopment" className="transition-colors duration-300 hover:text-blue-400">Web Development</a></li>
+                <li><a href="/services/digitalmarketing" className="transition-colors duration-300 hover:text-blue-400">Digital Marketing</a></li>
+                <li><a href="/services/crm" className="transition-colors duration-300 hover:text-blue-400">CRM Solutions</a></li>
+              </ul>
             </div>
-          </div>
 
-          <div>
-            <h4 className="text-slate-900 font-bold mb-6">Services</h4>
-            <ul className="space-y-3 text-sm">
-              <li><a href="#" className="hover:text-primary-600 transition-colors">Mobile Development</a></li>
-              <li><a href="#" className="hover:text-primary-600 transition-colors">Web Development</a></li>
-              <li><a href="#" className="hover:text-primary-600 transition-colors">Digital Marketing</a></li>
-              <li><a href="#" className="hover:text-primary-600 transition-colors">CRM Solutions</a></li>
-            </ul>
-          </div>
+            {/* Column 2: Company */}
+            <div>
+              <h4 className="text-white font-medium text-base mb-4">Company</h4>
+              <ul className="space-y-3 text-sm font-medium text-slate-400">
+                {NAV_ITEMS.map(item => (
+                  <li key={item.label}><a href={item.href} className="transition-colors duration-300 hover:text-blue-400">{item.label}</a></li>
+                ))}
+                <li><a href="/careers" className="transition-colors duration-300 hover:text-blue-400">Careers</a></li>
+              </ul>
+            </div>
 
-          <div>
-            <h4 className="text-slate-900 font-bold mb-6">Company</h4>
-            <ul className="space-y-3 text-sm">
-              {NAV_ITEMS.map(item => (
-                <li key={item.label}><a href={item.href} className="hover:text-primary-600 transition-colors">{item.label}</a></li>
-              ))}
-              <li><a href="#" className="hover:text-primary-600 transition-colors">Careers</a></li>
-            </ul>
-          </div>
+            {/* Column 3: Legal */}
+            <div>
+              <h4 className="text-white font-medium text-base mb-4">Legal</h4>
+              <ul className="space-y-3 text-sm font-medium text-slate-400">
+                <li><a href="/privacypolicy" className="transition-colors duration-300 hover:text-blue-400">Privacy Policy</a></li>
+                <li><a href="/termsofservice" className="transition-colors duration-300 hover:text-blue-400">Terms of Service</a></li>
+                <li><a href="/cookiespolicy" className="transition-colors duration-300 hover:text-blue-400">Cookie Policy</a></li>
+              </ul>
+            </div>
 
-          <div>
-            <h4 className="text-slate-900 font-bold mb-6">Legal</h4>
-            <ul className="space-y-3 text-sm">
-              <li><a href="/privacypolicy" className="hover:text-primary-600 transition-colors">Privacy Policy</a></li>
-              <li><a href="/termsofservice" className="hover:text-primary-600 transition-colors">Terms of Service</a></li>
-              <li><a href="/cookiespolicy" className="hover:text-primary-600 transition-colors">Cookie Policy</a></li>
-            </ul>
+            {/* Column 4: Social */}
+            <div>
+              <h4 className="text-white font-medium text-base mb-4">Social</h4>
+              <div className="flex gap-4 mb-4">
+                <a href="#" className="text-slate-400 hover:text-blue-400 transition-colors duration-300">
+                  <Mail size={18} />
+                </a>
+                <a href="#" className="text-slate-400 hover:text-blue-400 transition-colors duration-300">
+                  <Facebook size={18} />
+                </a>
+                <a href="#" className="text-slate-400 hover:text-blue-400 transition-colors duration-300">
+                  <Instagram size={18} />
+                </a>
+              </div>
+            </div>
           </div>
 
         </div>
+
+        {/* Middle Bar: Copyright */}
+        <div className="mt-8 mb-0 flex flex-col md:flex-row items-center justify-between gap-4 text-xs font-medium text-slate-400 relative z-10">
+          <div>
+            &copy; {new Date().getFullYear()} SyncTech Software Solutions. All rights reserved.
+          </div>
+          <div>
+            Design by SyncTechn
+          </div>
+        </div>
       </div>
+
+      {/* Huge Background Text - Centered Watermark */}
+      <div className="absolute inset-0 w-full h-full flex items-center justify-center select-none pointer-events-none overflow-hidden z-0">
+  <span className="text-[14vw] leading-none font-black tracking-tighter text-transparent bg-clip-text bg-gradient-to-t from-blue-600/30 via-blue-500/20 to-cyan-400/10 translate-y-[25%]">
+    SYNCTECHN
+  </span>
+</div>\
     </footer>
   );
 };

@@ -43,10 +43,10 @@ export default function IndustriesSection() {
   const [active, setActive] = useState("startup");
 
   return (
-    <section className="relative py-32 bg-white overflow-hidden font-sans">
+    <section className="relative py-16 bg-white overflow-hidden font-sans">
       <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Header */}
-        <div className="text-center mb-20">
+        <div className="text-center mb-10">
           <motion.h2
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
@@ -66,7 +66,7 @@ export default function IndustriesSection() {
             hidden: {},
             visible: { transition: { staggerChildren: 0.1 } },
           }}
-          className="flex flex-wrap justify-center gap-4 lg:gap-6 mb-20"
+          className="flex flex-wrap justify-center gap-4 lg:gap-6 mb-10"
         >
           {industries.map((item) => {
             const Icon = item.icon;
@@ -79,7 +79,7 @@ export default function IndustriesSection() {
                 }}
                 key={item.id}
                 onClick={() => setActive(item.id)}
-                className={`relative group flex flex-col items-center justify-center w-28 h-36 lg:w-32 lg:h-40 rounded-[24px] border transition-all duration-500
+                className={`relative group flex flex-col items-center justify-center w-28 h-32 lg:w-32 lg:h-36 rounded-[24px] border transition-all duration-500
                 ${
                   isActive
                     ? "bg-white shadow-[0_20px_40px_rgba(0,0,0,0.08)] border-indigo-100 scale-105 z-10"
@@ -113,7 +113,7 @@ export default function IndustriesSection() {
         </motion.div>
 
         {/* Active Scene Container */}
-        <div className="relative min-h-[600px] w-full max-w-5xl mx-auto flex items-center justify-center">
+        <div className="relative min-h-[400px] w-full max-w-5xl mx-auto flex items-center justify-center">
           <AnimatePresence mode="wait">
             <motion.div
               key={active}
@@ -153,7 +153,7 @@ function CenterCard({
   children: React.ReactNode;
 }) {
   return (
-    <div className="w-[340px] md:w-[400px] h-[520px] bg-white rounded-[32px] shadow-[0_20px_80px_rgba(0,0,0,0.06)] border border-slate-100 p-8 flex flex-col relative z-10 mx-auto overflow-hidden">
+    <div className="w-[340px] md:w-[400px] h-[360px] bg-white rounded-[32px] shadow-[0_20px_80px_rgba(0,0,0,0.06)] border border-slate-100 p-8 flex flex-col relative z-10 mx-auto overflow-hidden">
       <div className="flex items-center gap-3 mb-4">
         <Icon className="w-5 h-5 text-indigo-600" />
         <span className="font-bold text-slate-800 text-sm">{industry}</span>
@@ -207,7 +207,7 @@ function FloatingWidget({
 
 function StartupScene() {
   return (
-    <div className="relative w-full h-[600px] flex items-center justify-center">
+    <div className="relative w-full h-[400px] flex items-center justify-center">
       {/* Floating Widgets */}
       <FloatingWidget className="top-20 left-4 md:left-12 lg:left-24" delay={0.1}>
         <div className="w-12 h-12 rounded-xl bg-yellow-50 flex items-center justify-center">
@@ -216,7 +216,7 @@ function StartupScene() {
       </FloatingWidget>
 
       <FloatingWidget
-        className="bottom-24 left-0 md:left-8 lg:left-16 w-32"
+        className="bottom-12 left-0 md:left-8 lg:left-16 w-32"
         delay={0.2}
       >
         <div className="text-[10px] font-semibold text-slate-400 mb-1">
@@ -240,7 +240,7 @@ function StartupScene() {
       </FloatingWidget>
 
       <FloatingWidget
-        className="top-28 right-4 md:right-12 lg:right-24 w-36"
+        className="top-12 right-4 md:right-12 lg:right-24 w-36"
         delay={0.3}
       >
         <div className="text-[10px] font-semibold text-slate-400 mb-1">Users</div>
@@ -261,7 +261,7 @@ function StartupScene() {
       </FloatingWidget>
 
       <FloatingWidget
-        className="bottom-28 right-0 md:right-8 lg:right-20"
+        className="bottom-16 right-0 md:right-8 lg:right-20"
         delay={0.4}
       >
         <div className="w-12 h-12 rounded-xl bg-indigo-50 flex items-center justify-center">
@@ -275,7 +275,7 @@ function StartupScene() {
         title="Empowering Fast-Growing Startups"
         icon={Rocket}
       >
-        <div className="absolute bottom-0 left-1/2 -translate-x-1/2 w-full h-3/4 flex items-end justify-center pb-10">
+        <div className="relative w-full flex items-center justify-center pt-2">
           <motion.div
             animate={{ y: [0, -15, 0] }}
             transition={{ duration: 3, repeat: Infinity, ease: "easeInOut" }}
@@ -283,7 +283,7 @@ function StartupScene() {
           >
             <Rocket className="w-32 h-32 text-indigo-600 drop-shadow-[0_20px_30px_rgba(79,70,229,0.3)]" />
           </motion.div>
-          <div className="absolute bottom-0 left-1/2 -translate-x-1/2 w-48 h-48 bg-gradient-to-t from-indigo-100 to-transparent rounded-full blur-2xl opacity-80" />
+          <div className="absolute bottom-0 left-1/2 -translate-x-1/2 w-36 h-36 bg-gradient-to-t from-indigo-100 to-transparent rounded-full blur-2xl opacity-80" />
           <div className="absolute -bottom-10 left-1/2 -translate-x-1/2 w-32 h-32 bg-indigo-300 blur-3xl opacity-50 rounded-full" />
         </div>
       </CenterCard>
@@ -293,9 +293,9 @@ function StartupScene() {
 
 function SMBScene() {
   return (
-    <div className="relative w-full h-[600px] flex items-center justify-center">
+    <div className="relative w-full h-[400px] flex items-center justify-center">
       <FloatingWidget
-        className="top-24 left-4 md:left-12 lg:left-24 w-36"
+        className="top-12 left-4 md:left-12 lg:left-24 w-36"
         delay={0.1}
       >
         <div className="text-[10px] font-semibold text-slate-400 mb-1">
@@ -319,7 +319,7 @@ function SMBScene() {
       </FloatingWidget>
 
       <FloatingWidget
-        className="top-40 right-4 md:right-12 lg:right-24 w-32 flex flex-col items-center"
+        className="top-20 right-4 md:right-12 lg:right-24 w-32 flex flex-col items-center"
         delay={0.2}
       >
         <div className="text-[10px] font-semibold text-slate-400 mb-2 w-full text-left">
@@ -356,7 +356,7 @@ function SMBScene() {
       </FloatingWidget>
 
       <FloatingWidget
-        className="bottom-24 right-10 md:right-16 lg:right-32"
+        className="bottom-12 right-10 md:right-16 lg:right-32"
         delay={0.3}
       >
         <div className="w-12 h-12 rounded-xl bg-blue-50 flex items-center justify-center">
@@ -369,8 +369,8 @@ function SMBScene() {
         title="Scaling Business Operations"
         icon={TrendingUp}
       >
-        <div className="absolute bottom-0 left-1/2 -translate-x-1/2 w-full h-3/4 flex items-end justify-center pb-12">
-          <div className="relative w-48 h-48">
+        <div className="relative w-full flex items-center justify-center pt-2">
+          <div className="relative w-36 h-36">
             <motion.div
               initial={{ pathLength: 0, opacity: 0 }}
               animate={{ pathLength: 1, opacity: 1 }}
@@ -403,9 +403,9 @@ function SMBScene() {
 
 function EnterpriseScene() {
   return (
-    <div className="relative w-full h-[600px] flex items-center justify-center">
+    <div className="relative w-full h-[400px] flex items-center justify-center">
       <FloatingWidget
-        className="top-24 left-8 md:left-16 lg:left-28"
+        className="top-12 left-8 md:left-16 lg:left-28"
         delay={0.1}
       >
         <div className="w-12 h-12 rounded-full bg-slate-50 border border-slate-100 flex items-center justify-center">
@@ -414,7 +414,7 @@ function EnterpriseScene() {
       </FloatingWidget>
 
       <FloatingWidget
-        className="bottom-32 left-4 md:left-12 lg:left-20"
+        className="bottom-16 left-4 md:left-12 lg:left-20"
         delay={0.2}
       >
         <div className="w-12 h-12 rounded-full bg-slate-50 border border-slate-100 flex items-center justify-center">
@@ -432,7 +432,7 @@ function EnterpriseScene() {
       </FloatingWidget>
 
       <FloatingWidget
-        className="bottom-28 right-4 md:right-12 lg:right-20"
+        className="bottom-16 right-4 md:right-12 lg:right-20"
         delay={0.4}
       >
         <div className="w-12 h-12 rounded-full bg-slate-50 border border-slate-100 flex items-center justify-center">
@@ -445,7 +445,7 @@ function EnterpriseScene() {
         title="Enterprise Digital Transformation"
         icon={Building2}
       >
-        <div className="absolute bottom-0 left-1/2 -translate-x-1/2 w-full h-full flex items-end justify-center pb-10">
+        <div className="relative w-full flex items-center justify-center pt-2">
           <svg
             className="absolute inset-0 w-full h-full opacity-30"
             viewBox="0 0 400 500"
@@ -491,7 +491,7 @@ function EnterpriseScene() {
 
 function EducationScene() {
   return (
-    <div className="relative w-full h-[600px] flex items-center justify-center">
+    <div className="relative w-full h-[400px] flex items-center justify-center">
       <FloatingWidget
         className="top-12 left-8 md:left-16 lg:left-28"
         delay={0.1}
@@ -502,7 +502,7 @@ function EducationScene() {
       </FloatingWidget>
 
       <FloatingWidget
-        className="top-40 left-0 md:left-8 lg:left-16 w-28"
+        className="top-20 left-0 md:left-8 lg:left-16 w-28"
         delay={0.2}
       >
         <div className="text-[10px] font-semibold text-slate-400 mb-1">
@@ -526,7 +526,7 @@ function EducationScene() {
       </FloatingWidget>
 
       <FloatingWidget
-        className="top-32 right-4 md:right-12 lg:right-24 w-28 flex flex-col items-center"
+        className="top-16 right-4 md:right-12 lg:right-24 w-28 flex flex-col items-center"
         delay={0.4}
       >
         <div className="text-[10px] font-semibold text-slate-400 mb-2 w-full text-left">
@@ -563,7 +563,7 @@ function EducationScene() {
       </FloatingWidget>
 
       <FloatingWidget
-        className="bottom-28 right-8 md:right-16 lg:right-28"
+        className="bottom-16 right-8 md:right-16 lg:right-28"
         delay={0.5}
       >
         <div className="flex -space-x-2">
@@ -583,7 +583,7 @@ function EducationScene() {
         title="Smart Learning Solutions"
         icon={BookOpen}
       >
-        <div className="absolute bottom-0 left-1/2 -translate-x-1/2 w-full h-3/4 flex items-end justify-center pb-16">
+        <div className="relative w-full flex items-center justify-center pt-2">
           <motion.div
             animate={{ y: [0, -10, 0] }}
             transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
@@ -614,7 +614,7 @@ function EducationScene() {
 
 function HealthcareScene() {
   return (
-    <div className="relative w-full h-[600px] flex items-center justify-center">
+    <div className="relative w-full h-[400px] flex items-center justify-center">
       <FloatingWidget
         className="top-20 left-0 md:left-8 lg:left-20 w-40"
         delay={0.1}
@@ -646,7 +646,7 @@ function HealthcareScene() {
       </FloatingWidget>
 
       <FloatingWidget
-        className="bottom-24 left-6 md:left-12 lg:left-24 w-28"
+        className="bottom-12 left-6 md:left-12 lg:left-24 w-28"
         delay={0.2}
       >
         <div className="text-[10px] font-semibold text-slate-400 mb-1">
@@ -662,7 +662,7 @@ function HealthcareScene() {
       </FloatingWidget>
 
       <FloatingWidget
-        className="top-28 right-0 md:right-8 lg:right-20 w-36"
+        className="top-12 right-0 md:right-8 lg:right-20 w-36"
         delay={0.3}
       >
         <div className="text-[10px] font-semibold text-slate-400 mb-1">
@@ -705,7 +705,7 @@ function HealthcareScene() {
         title="AI-Powered Healthcare Innovation"
         icon={HeartPulse}
       >
-        <div className="absolute bottom-0 left-1/2 -translate-x-1/2 w-full h-3/4 flex items-end justify-center pb-16">
+        <div className="relative w-full flex items-center justify-center pt-2">
           <div className="relative w-40 h-40 flex items-center justify-center">
             <div className="absolute inset-0 bg-blue-100 rounded-full blur-2xl opacity-60 animate-pulse" />
             <motion.div
@@ -730,7 +730,7 @@ function HealthcareScene() {
 
 function EcommerceScene() {
   return (
-    <div className="relative w-full h-[600px] flex items-center justify-center">
+    <div className="relative w-full h-[400px] flex items-center justify-center">
       <FloatingWidget
         className="top-20 left-2 md:left-8 lg:left-20 w-36"
         delay={0.1}
@@ -770,7 +770,7 @@ function EcommerceScene() {
       </FloatingWidget>
 
       <FloatingWidget
-        className="top-32 right-2 md:right-8 lg:right-20 w-36"
+        className="top-16 right-2 md:right-8 lg:right-20 w-36"
         delay={0.3}
       >
         <div className="w-full h-20 bg-slate-50 rounded-xl mb-3 flex items-center justify-center">
@@ -788,7 +788,7 @@ function EcommerceScene() {
       </FloatingWidget>
 
       <FloatingWidget
-        className="bottom-24 right-6 md:right-12 lg:right-24 w-40"
+        className="bottom-12 right-6 md:right-12 lg:right-24 w-40"
         delay={0.4}
       >
         <div className="text-[10px] font-semibold text-slate-400 mb-2">
@@ -807,7 +807,7 @@ function EcommerceScene() {
         title="Intelligent Commerce Experiences"
         icon={ShoppingCart}
       >
-        <div className="absolute bottom-0 left-1/2 -translate-x-1/2 w-full h-3/4 flex items-end justify-center pb-16">
+        <div className="relative w-full flex items-center justify-center pt-2">
           <motion.div
             animate={{ x: [-5, 5, -5], y: [0, -5, 0] }}
             transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
