@@ -14,20 +14,30 @@ const Services: React.FC = () => {
         
         {/* Header */}
         <Reveal>
-          <div className="mb-12 max-w-4xl mx-auto text-center">
-            <h4 className="text-primary-600 font-bold uppercase tracking-[0.2em] text-sm mb-4">Our Expertise</h4>
-            <h2 className="text-4xl md:text-6xl font-bold text-slate-900 leading-[1.1] mb-6">
-               We deliver high-impact <br />
-               <span className="text-transparent bg-clip-text bg-gradient-to-r from-primary-600 to-blue-500">Software & Digital Services</span>
-            </h2>
-            <p className="text-slate-500 text-lg max-w-2xl mx-auto font-light">
-              From concept to execution, we provide the comprehensive expertise needed to transform your vision into reality.
-            </p>
-          </div>
+          <div className="mb-20 max-w-5xl mx-auto text-center">
+  <h4 className="text-blue-600 font-bold uppercase tracking-[0.3em] text-sm mb-5">
+    Software Development Services
+  </h4>
+
+  <h2 className="text-5xl md:text-7xl font-extrabold tracking-tight text-slate-900 leading-[1.05] mb-8">
+    Custom Software Development &
+    <span className="block bg-gradient-to-r from-blue-600 via-blue-500 to-cyan-500 bg-clip-text text-transparent">
+      Digital Transformation Solutions
+    </span>
+  </h2>
+
+  <p className="text-slate-600 text-lg md:text-xl max-w-4xl mx-auto leading-relaxed">
+    SyncTech Software Solutions provides custom software
+    development, web applications, mobile app development,
+    AI-powered solutions, cloud services, and digital
+    transformation strategies that help businesses accelerate
+    growth and achieve long-term success.
+  </p>
+</div>
         </Reveal>
 
         {/* Desktop Wave Services */}
-        <div className="hidden lg:block relative h-[600px] w-full mb-16">
+        <div className="hidden lg:block relative h-[600px] w-full m-auto">
            {/* SVG Wave */}
            <svg className="absolute inset-0 w-full h-full overflow-visible pointer-events-none" preserveAspectRatio="none" viewBox="0 0 1200 600">
                <defs>
@@ -62,36 +72,122 @@ const Services: React.FC = () => {
                return (
                   <div key={service.id} className="absolute transform -translate-x-1/2 -translate-y-1/2 group w-64 flex flex-col items-center" style={{ left: pos.left, top: pos.top }}>
                       <Reveal delay={index * 150}>
-                         <a href={`#service-${service.id}`} className="flex flex-col items-center group/item relative">
-                             {/* Hexagon Icon */}
-                             <div className="relative w-24 h-24 flex items-center justify-center transition-all duration-500 group-hover/item:scale-110 cursor-pointer z-20">
-                                <div className="absolute inset-0 bg-white clip-path-hexagon shadow-lg group-hover/item:shadow-xl transition-all border-none"></div>
-                                <div className="absolute inset-0 bg-gradient-to-br from-blue-50 to-transparent clip-path-hexagon"></div>
-                                <service.icon className="relative z-10 text-primary-600 group-hover/item:text-primary-700 transition-colors" size={36} />
-                                
-                                <div className={`absolute left-1/2 -translate-x-1/2 w-2 h-2 bg-primary-500 rounded-full animate-pulse ${isTop ? '-bottom-4' : '-top-4'}`}></div>
-                             </div>
-                             
-                             {/* Text Content */}
-                             <div className={`absolute w-64 text-center transition-all duration-500 z-30 ${isTop ? 'top-28 pt-4' : 'bottom-28 pb-4'} opacity-80 group-hover/item:opacity-100`}>
-                                 <h3 className="text-xl font-bold text-slate-800 mb-2 group-hover/item:text-primary-600 transition-colors">{service.title}</h3>
-                                 <p className="text-sm text-slate-500 leading-relaxed font-light">{service.shortDesc}</p>
-                             </div>
+                        <a
+  href={`#service-${service.id}`}
+  className="flex flex-col items-center group/item relative"
+>
+  {/* Hexagon */}
+  <div
+    className="
+      relative
+      w-28
+      h-28
+      flex
+      items-center
+      justify-center
+      transition-all
+      duration-500
+      group-hover/item:scale-110
+      group-hover/item:-translate-y-2
+      cursor-pointer
+      z-20
+    "
+  >
+    {/* Glow */}
+    <div
+      className="
+        absolute
+        inset-0
+        rounded-full
+        bg-blue-500/0
+        blur-2xl
+        transition-all
+        duration-500
+        group-hover/item:bg-blue-500/20
+      "
+    />
 
-                             {/* Big Number Background */}
-                             <span 
-                               className="absolute text-[140px] font-bold text-slate-200/40 -z-10 select-none pointer-events-none font-sans leading-none transition-colors group-hover/item:text-blue-200/40" 
-                               style={{ [isTop ? 'bottom' : 'top']: '-60px' }}
-                             >
-                               0{index + 1}
-                             </span>
-                         </a>
-                      </Reveal>
-                  </div>
-               )
-           })}
-        </div>
+     <div className="absolute inset-0 bg-white clip-path-hexagon shadow-xl border border-slate-100" />
 
+    <div className="absolute inset-0 bg-gradient-to-br from-blue-50 via-white to-cyan-50 clip-path-hexagon" />
+
+    <service.icon
+      className="
+        relative
+        z-10
+        text-blue-600
+        group-hover/item:text-blue-700
+        transition-colors
+      "
+      size={40}
+    />
+
+    {/* Number */}
+  <span
+    className="
+      absolute
+      text-[160px]
+      font-black
+      text-slate-200/40
+      transition-all
+      duration-500
+      group-hover/item:text-blue-500/20
+      group-hover/item:scale-110
+      -z-10
+      select-none
+      pointer-events-none
+      leading-none
+    "
+    style={{ [isTop ? "bottom" : "top"]: "-150px" }}
+  >
+    {index + 1}
+  </span>
+
+    <div
+      className={`
+        absolute left-1/2 -translate-x-1/2
+        w-3 h-3 rounded-full bg-blue-500
+        animate-pulse
+        ${isTop ? "-bottom-5" : "-top-5"}
+      `}
+    />
+  </div>
+
+  {/* Content */}
+ 
+  <div
+    className={`
+      absolute w-72 text-center
+      transition-all duration-500
+      z-30
+      ${isTop ? "top-32" : "bottom-32"}
+    `}
+  >
+    <h3
+      className="
+        text-2xl
+        font-extrabold
+        tracking-tight
+        text-slate-900
+        mb-3
+        transition-all
+        duration-300
+        group-hover/item:text-blue-600
+      "
+    >
+      {service.title}
+    </h3>
+
+    <p className="text-slate-600 leading-relaxed text-md">
+      {service.shortDesc}
+    </p>
+  </div>
+</a>
+  </Reveal>
+</div>
+);
+})}
+</div>
         {/* Mobile Vertical List */}
         <div className="lg:hidden space-y-8 mb-16 relative pl-8 border-l border-slate-200 ml-4">
             {SERVICES.map((service, index) => (

@@ -11,16 +11,19 @@ import Support from './components/Support';
 import Contact from './components/Contact';
 import Pricing from './components/Pricing';
 import Footer from './components/Footer';
+import Features from './components/Features';
 
 function App() {
   return (
+    <>
     <div className="min-h-screen flex flex-col font-sans text-slate-900 bg-white">
       <Navbar />
       <main>
         <Hero />
         <About />
+        <Features/>
         <Services />
-        <Pricing />
+       {/* <Pricing />*/}
         <WhyUs />
         <Operations />
         <Portfolio />
@@ -30,6 +33,7 @@ function App() {
       </main>
       <Footer />
     </div>
+    </>
   );
 }
 
