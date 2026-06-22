@@ -5,7 +5,7 @@ import { Reveal } from './Reveal';
 const Operations: React.FC = () => {
   return (
     <>
-      {/* 7️⃣ Industries We Serve */}
+      {/* 7️⃣ Industries We Serve
       <section className="py-24 bg-slate-50 border-t border-slate-100">
         <div className="container mx-auto px-4">
           <Reveal>
@@ -22,7 +22,7 @@ const Operations: React.FC = () => {
             ))}
           </div>
         </div>
-      </section>
+      </section> */}
 
       {/* 8️⃣ Our Process / Expertise Section (Wave Timeline) */}
       <section id="process" className="py-32 bg-white relative overflow-hidden">
@@ -147,7 +147,7 @@ const Operations: React.FC = () => {
         `}} />
       </section>
 
-      {/* 9️⃣ Technologies */}
+      {/* 9️⃣ Technologies
       <section className="py-24 bg-slate-50 border-y border-slate-200 relative overflow-hidden">
         <div className="container mx-auto px-4 relative z-10">
           <Reveal>
@@ -171,7 +171,7 @@ const Operations: React.FC = () => {
             ))}
           </div>
         </div>
-      </section>
+      </section> */}
     </>
   );
 };
