@@ -1,5 +1,5 @@
-import React from "react";
-import { Routes, Route } from "react-router-dom";
+import React, { useEffect } from "react";
+import { Routes, Route, useLocation } from "react-router-dom";
 
 import Hero from "./components/Hero";
 import About from "./components/About";
@@ -25,6 +25,7 @@ import ContactUs from "./components/ContactUs";
 import Layout from "./components/Layout";
 import Careers from "./components/Careers";
 import Features from "./components/Features";
+import NotFound from "./components/NotFound";
 
 function HomePage() {
   return (
@@ -47,6 +48,24 @@ function HomePage() {
 }
 
 function App() {
+  const { hash, pathname } = useLocation();
+
+  useEffect(() => {
+    if (hash) {
+      // Find element by id (removing the # character)
+      const element = document.getElementById(hash.slice(1));
+      if (element) {
+        const timer = setTimeout(() => {
+          element.scrollIntoView({ behavior: "smooth" });
+        }, 100);
+        return () => clearTimeout(timer);
+      }
+    } else {
+      // Scroll to top on page change
+      window.scrollTo({ top: 0, behavior: "smooth" });
+    }
+  }, [hash, pathname]);
+
   return (
     <div className="min-h-screen flex flex-col font-sans text-slate-900 bg-white">
       <Routes>
@@ -64,6 +83,7 @@ function App() {
           <Route path="/careers" element={<Careers />} />
           <Route path="/contact" element={<ContactUs />} />
         </Route>
+        <Route path="*" element={<NotFound />} />
       </Routes>
     </div>
   );

@@ -1,6 +1,7 @@
 import React from 'react';
 import { ArrowRight, Check, Zap, Layers } from 'lucide-react';
 import { SERVICES } from '../constants';
+import { Link } from "react-router-dom";
 import { Reveal } from './Reveal';
 
 const Services: React.FC = () => {
@@ -292,9 +293,9 @@ const Services: React.FC = () => {
                         </div>
                       </div>
                       
-                      <a href="#contact" className="group inline-flex items-center gap-3 text-slate-900 font-semibold border-b border-primary-500 pb-1 hover:text-primary-600 transition-colors">
+                      <Link to="/contact" className="group inline-flex items-center gap-3 text-slate-900 font-semibold border-b border-primary-500 pb-1 hover:text-primary-600 transition-colors">
                         Start Project <ArrowRight size={18} className="group-hover:translate-x-1 transition-transform" />
-                      </a>
+                      </Link>
                   </div>
                 </Reveal>
               </div>

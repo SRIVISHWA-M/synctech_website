@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { motion } from 'framer-motion';
 import { User, Building, Mail, Phone, Tag, PenSquare, Send, Linkedin, Twitter, Instagram, Code, Smartphone, Megaphone, Handshake, MessageSquare } from 'lucide-react';
 
@@ -67,6 +67,89 @@ const AnimatedPhone = () => {
 };
 
 const ContactUs = () => {
+  const [formData, setFormData] = useState({
+    fullName: "",
+    companyName: "",
+    email: "",
+    phoneNumber: "",
+    subject: "",
+    message: "",
+  });
+
+  const [status, setStatus] = useState<{
+    type: "idle" | "loading" | "success" | "error";
+    message: string;
+  }>({ type: "idle", message: "" });
+
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
+    const { name, value } = e.target;
+    setFormData((prev) => ({ ...prev, [name]: value }));
+  };
+
+  const handleSubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
+    setStatus({ type: "loading", message: "Sending message..." });
+
+    const googleScriptUrl = import.meta.env.VITE_GOOGLE_SHEETS_SCRIPT_URL || "";
+
+    if (!googleScriptUrl || googleScriptUrl.includes("PLACEHOLDER")) {
+      console.warn("Google Apps Script URL is not configured. Please check your .env file.");
+      setStatus({
+        type: "error",
+        message: "Google Sheets integration is not configured. Please set the VITE_GOOGLE_SHEETS_SCRIPT_URL in your .env file.",
+      });
+      return;
+    }
+
+    // Split Full Name into Name and Last Name
+    const nameParts = formData.fullName.trim().split(/\s+/);
+    const firstName = nameParts[0] || "";
+    const lastName = nameParts.slice(1).join(" ") || "";
+
+    // Prepend subject to message to preserve subject info
+    const finalMessage = formData.subject 
+      ? `[Subject: ${formData.subject}] ${formData.message}` 
+      : formData.message;
+
+    try {
+      await fetch(googleScriptUrl, {
+        method: "POST",
+        mode: "no-cors", // Crucial to prevent CORS issues with Google Apps Script
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          firstName,
+          lastName,
+          email: formData.email,
+          companyName: formData.companyName,
+          contact: formData.phoneNumber,
+          message: finalMessage,
+        }),
+      });
+
+      setStatus({
+        type: "success",
+        message: "Thank you! Your message has been sent and recorded successfully.",
+      });
+
+      setFormData({
+        fullName: "",
+        companyName: "",
+        email: "",
+        phoneNumber: "",
+        subject: "",
+        message: "",
+      });
+    } catch (error) {
+      console.error("Submission error:", error);
+      setStatus({
+        type: "error",
+        message: "Failed to send message. Please try again later.",
+      });
+    }
+  };
+
   return (
     <section className="relative min-h-screen bg-[#F0F6FF] pt-32 pb-10 px-4 md:px-8 lg:px-12 overflow-hidden flex justify-center items-start font-sans">
       
@@ -109,47 +192,110 @@ const ContactUs = () => {
             </div>
 
             {/* The Form */}
-            <form className="space-y-3 w-full max-w-[420px]">
+            <form onSubmit={handleSubmit} className="space-y-3 w-full max-w-[420px]">
               {/* Row 1: Name & Company */}
               <div className="grid grid-cols-2 gap-3">
                 <div className="relative">
                   <User className="absolute left-3 top-1/2 -translate-y-1/2 text-blue-500" size={14} />
-                  <input type="text" className="w-full bg-white border-2 border-slate-100 rounded-xl pl-9 pr-3 py-2.5 text-xs font-medium text-slate-800 focus:outline-none focus:border-blue-500 focus:ring-2 focus:ring-blue-500/10 transition-all placeholder:text-slate-400" placeholder="Full Name*" />
+                  <input
+                    type="text"
+                    name="fullName"
+                    value={formData.fullName}
+                    onChange={handleChange}
+                    required
+                    className="w-full bg-white border-2 border-slate-100 rounded-xl pl-9 pr-3 py-2.5 text-xs font-medium text-slate-800 focus:outline-none focus:border-blue-500 focus:ring-2 focus:ring-blue-500/10 transition-all placeholder:text-slate-400"
+                    placeholder="Full Name*"
+                  />
                 </div>
                 <div className="relative">
                   <Building className="absolute left-3 top-1/2 -translate-y-1/2 text-blue-500" size={14} />
-                  <input type="text" className="w-full bg-white border-2 border-slate-100 rounded-xl pl-9 pr-3 py-2.5 text-xs font-medium text-slate-800 focus:outline-none focus:border-blue-500 focus:ring-2 focus:ring-blue-500/10 transition-all placeholder:text-slate-400" placeholder="Company Name*" />
+                  <input
+                    type="text"
+                    name="companyName"
+                    value={formData.companyName}
+                    onChange={handleChange}
+                    required
+                    className="w-full bg-white border-2 border-slate-100 rounded-xl pl-9 pr-3 py-2.5 text-xs font-medium text-slate-800 focus:outline-none focus:border-blue-500 focus:ring-2 focus:ring-blue-500/10 transition-all placeholder:text-slate-400"
+                    placeholder="Company Name*"
+                  />
                 </div>
               </div>
 
               {/* Row 2: Email Address */}
               <div className="relative">
                 <Mail className="absolute left-3 top-1/2 -translate-y-1/2 text-blue-500" size={14} />
-                <input type="email" className="w-full bg-white border-2 border-slate-100 rounded-xl pl-9 pr-3 py-2.5 text-xs font-medium text-slate-800 focus:outline-none focus:border-blue-500 focus:ring-2 focus:ring-blue-500/10 transition-all placeholder:text-slate-400" placeholder="Email Address*" />
+                <input
+                  type="email"
+                  name="email"
+                  value={formData.email}
+                  onChange={handleChange}
+                  required
+                  className="w-full bg-white border-2 border-slate-100 rounded-xl pl-9 pr-3 py-2.5 text-xs font-medium text-slate-800 focus:outline-none focus:border-blue-500 focus:ring-2 focus:ring-blue-500/10 transition-all placeholder:text-slate-400"
+                  placeholder="Email Address*"
+                />
               </div>
 
               {/* Row 3: Phone & Subject */}
               <div className="grid grid-cols-2 gap-3">
                 <div className="relative">
                   <Phone className="absolute left-3 top-1/2 -translate-y-1/2 text-blue-500" size={14} />
-                  <input type="tel" className="w-full bg-white border-2 border-slate-100 rounded-xl pl-9 pr-3 py-2.5 text-xs font-medium text-slate-800 focus:outline-none focus:border-blue-500 focus:ring-2 focus:ring-blue-500/10 transition-all placeholder:text-slate-400" placeholder="Phone Number*" />
+                  <input
+                    type="tel"
+                    name="phoneNumber"
+                    value={formData.phoneNumber}
+                    onChange={handleChange}
+                    required
+                    className="w-full bg-white border-2 border-slate-100 rounded-xl pl-9 pr-3 py-2.5 text-xs font-medium text-slate-800 focus:outline-none focus:border-blue-500 focus:ring-2 focus:ring-blue-500/10 transition-all placeholder:text-slate-400"
+                    placeholder="Phone Number*"
+                  />
                 </div>
                 <div className="relative">
                   <Tag className="absolute left-3 top-1/2 -translate-y-1/2 text-blue-500" size={14} />
-                  <input type="text" className="w-full bg-white border-2 border-slate-100 rounded-xl pl-9 pr-3 py-2.5 text-xs font-medium text-slate-800 focus:outline-none focus:border-blue-500 focus:ring-2 focus:ring-blue-500/10 transition-all placeholder:text-slate-400" placeholder="Subject*" />
+                  <input
+                    type="text"
+                    name="subject"
+                    value={formData.subject}
+                    onChange={handleChange}
+                    required
+                    className="w-full bg-white border-2 border-slate-100 rounded-xl pl-9 pr-3 py-2.5 text-xs font-medium text-slate-800 focus:outline-none focus:border-blue-500 focus:ring-2 focus:ring-blue-500/10 transition-all placeholder:text-slate-400"
+                    placeholder="Subject*"
+                  />
                 </div>
               </div>
 
               {/* Row 4: Message */}
               <div className="relative">
                 <PenSquare className="absolute left-3 top-3.5 text-blue-500" size={14} />
-                <textarea rows={3} className="w-full bg-[#F8FAFC] border-2 border-slate-100 rounded-xl pl-9 pr-3 py-3 text-xs font-medium text-slate-800 focus:outline-none focus:border-blue-500 focus:ring-2 focus:ring-blue-500/10 transition-all placeholder:text-slate-400 resize-none" placeholder="Message*"></textarea>
+                <textarea
+                  name="message"
+                  value={formData.message}
+                  onChange={handleChange}
+                  required
+                  rows={3}
+                  className="w-full bg-[#F8FAFC] border-2 border-slate-100 rounded-xl pl-9 pr-3 py-3 text-xs font-medium text-slate-800 focus:outline-none focus:border-blue-500 focus:ring-2 focus:ring-blue-500/10 transition-all placeholder:text-slate-400 resize-none"
+                  placeholder="Message*"
+                />
               </div>
 
+              {/* Status Alert Message */}
+              {status.type !== "idle" && (
+                <div className={`text-xs px-4 py-2.5 rounded-xl font-semibold border ${
+                  status.type === "loading" ? "bg-blue-50 border-blue-200 text-blue-700" :
+                  status.type === "success" ? "bg-green-50 border-green-200 text-green-700" :
+                  "bg-red-50 border-red-200 text-red-700"
+                }`}>
+                  {status.message}
+                </div>
+              )}
+
               <div className="pt-2">
-                <button type="button" className="bg-gradient-to-r from-blue-600 to-blue-500 hover:from-blue-500 hover:to-blue-400 text-white font-bold rounded-full px-6 py-3 flex items-center justify-center gap-2 shadow-[0_8px_15px_-5px_rgba(37,99,235,0.5)] hover:-translate-y-0.5 transition-all duration-300 w-[180px] text-sm">
-                  <Send size={14} className="-rotate-12" />
-                  Send Message
+                <button
+                  type="submit"
+                  disabled={status.type === "loading"}
+                  className="bg-gradient-to-r from-blue-600 to-blue-500 hover:from-blue-500 hover:to-blue-400 text-white font-bold rounded-full px-6 py-3 flex items-center justify-center gap-2 shadow-[0_8px_15px_-5px_rgba(37,99,235,0.5)] hover:-translate-y-0.5 transition-all duration-300 w-[180px] text-sm disabled:opacity-50 disabled:cursor-not-allowed disabled:hover:translate-y-0"
+                >
+                  <Send size={14} className={status.type === "loading" ? "animate-pulse" : "-rotate-12"} />
+                  {status.type === "loading" ? "Sending..." : "Send Message"}
                 </button>
               </div>
             </form>

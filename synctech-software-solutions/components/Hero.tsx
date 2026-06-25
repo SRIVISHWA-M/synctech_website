@@ -4,6 +4,7 @@ import {
   Play,
   CheckCircle2,
 } from "lucide-react";
+import { Link } from "react-router-dom";
 import { Reveal } from "./Reveal";
 
 const Hero: React.FC = () => {
@@ -125,14 +126,14 @@ const Hero: React.FC = () => {
           <Reveal delay={600}>
             <div className="flex flex-wrap justify-center gap-4 mt-12">
 
-              <a
-                href="#contact"
+              <Link
+                to="/contact"
                 className="group inline-flex items-center gap-3 px-8 py-4 rounded-full bg-gradient-to-r from-blue-700 to-cyan-500 text-white font-semibold shadow-xl hover:-translate-y-1 hover:shadow-blue-500/30 transition-all duration-300"
               >
                 Get Free Consultation
 
                 <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
-              </a>
+              </Link>
               </div>
           </Reveal>
           </div>

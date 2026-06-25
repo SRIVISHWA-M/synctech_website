@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { Menu, X } from "lucide-react";
+import { Link, useLocation } from "react-router-dom";
 
 const NAV_ITEMS = [
   { label: "Services", href: "#services" },
@@ -12,6 +13,8 @@ const NAV_ITEMS = [
 const Navbar: React.FC = () => {
   const [isOpen, setIsOpen] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
+  const location = useLocation();
+  const isHomePage = location.pathname === "/";
 
   useEffect(() => {
     const handleScroll = () => {
@@ -39,7 +42,7 @@ const Navbar: React.FC = () => {
         <div className="relative container mx-auto px-6 lg:px-10">
           <div className="flex items-center justify-between h-[64px]">
 
-            <a href="/" className="flex items-center gap-3 group">
+            <Link to="/" className="flex items-center gap-3 group">
               <img
                 src="https://res.cloudinary.com/dij2x0ixo/image/upload/e_background_removal/f_png/v1782032673/SyncTechWhiteLogo_bt3s0u.jpg"
                 alt="SyncTechn Logo"
@@ -48,28 +51,31 @@ const Navbar: React.FC = () => {
               <span className="text-2xl font-bold tracking-tight text-blue-800">
                 Sync<span className="text-cyan-400">Techn</span>
               </span>
-            </a>
+            </Link>
 
             <div className="hidden lg:flex items-center h-full">
-              {NAV_ITEMS.map((item) => (
-                <a
-                  key={item.label}
-                  href={item.href}
-                  className="relative px-5 h-full flex items-center text-slate-700 font-semibold transition-all duration-300 hover:text-blue-600 group"
-                >
-                  {item.label}
-                  <span className="absolute bottom-0 left-1/2 h-[3px] w-0 bg-blue-600 transition-all duration-300 group-hover:w-full group-hover:left-0" />
-                </a>
-              ))}
+              {NAV_ITEMS.map((item) => {
+                const targetPath = isHomePage ? item.href : `/${item.href}`;
+                return (
+                  <Link
+                    key={item.label}
+                    to={targetPath}
+                    className="relative px-5 h-full flex items-center text-slate-700 font-semibold transition-all duration-300 hover:text-blue-600 group"
+                  >
+                    {item.label}
+                    <span className="absolute bottom-0 left-1/2 h-[3px] w-0 bg-blue-600 transition-all duration-300 group-hover:w-full group-hover:left-0" />
+                  </Link>
+                );
+              })}
             </div>
 
             <div className="hidden lg:block">
-              <a
-                href="#contact"
+              <Link
+                to="/contact"
                 className="px-6 py-3 rounded-xl bg-gradient-to-r from-cyan-500 to-blue-600 text-white font-semibold shadow-lg hover:shadow-xl hover:scale-105 transition-all duration-300"
               >
                 Contact Us
-              </a>
+              </Link>
             </div>
 
             <button className="lg:hidden text-slate-900" onClick={() => setIsOpen(!isOpen)}>
@@ -81,24 +87,27 @@ const Navbar: React.FC = () => {
         {isOpen && (
           <div className="lg:hidden border-t border-slate-200 bg-white/95 backdrop-blur-xl rounded-b-2xl">
             <div className="flex flex-col py-4">
-              {NAV_ITEMS.map((item) => (
-                <a
-                  key={item.label}
-                  href={item.href}
-                  onClick={() => setIsOpen(false)}
-                  className="px-6 py-4 text-slate-700 font-medium border-b border-slate-100 hover:bg-blue-50 hover:text-blue-600 transition-all"
-                >
-                  {item.label}
-                </a>
-              ))}
+              {NAV_ITEMS.map((item) => {
+                const targetPath = isHomePage ? item.href : `/${item.href}`;
+                return (
+                  <Link
+                    key={item.label}
+                    to={targetPath}
+                    onClick={() => setIsOpen(false)}
+                    className="px-6 py-4 text-slate-700 font-medium border-b border-slate-100 hover:bg-blue-50 hover:text-blue-600 transition-all"
+                  >
+                    {item.label}
+                  </Link>
+                );
+              })}
               <div className="px-6 py-4">
-                <a
-                  href="#contact"
+                <Link
+                  to="/contact"
                   onClick={() => setIsOpen(false)}
                   className="block text-center py-3 rounded-xl bg-gradient-to-r from-cyan-500 to-blue-600 text-white font-semibold"
                 >
                   Contact Us
-                </a>
+                </Link>
               </div>
             </div>
           </div>

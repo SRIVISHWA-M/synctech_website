@@ -2,6 +2,7 @@ import React from "react";
 import { ArrowRight, Lightbulb,
   Layers3,
   Users, } from "lucide-react";
+import { Link } from "react-router-dom";
 import { Reveal } from "./Reveal";
 
 const About: React.FC = () => {
@@ -125,8 +126,8 @@ const About: React.FC = () => {
             <Reveal delay={700}>
               <div className="mt-10">
 
-                <a
-                  href="#contact"
+                <Link
+                  to="/contact"
                   className="
                     group
                     inline-flex
@@ -150,7 +151,7 @@ const About: React.FC = () => {
                   Let's Build Together
 
                   <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
-                </a>
+                </Link>
 
               </div>
             </Reveal>
