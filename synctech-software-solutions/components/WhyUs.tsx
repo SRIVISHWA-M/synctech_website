@@ -8,55 +8,7 @@ import {
 import { Reveal } from "./Reveal";
 
 const WhyUs: React.FC = () => {
-  const features = [
-  {
-    icon: Code2,
-    image:
-      "https://images.pexels.com/photos/3183150/pexels-photo-3183150.jpeg?auto=compress&cs=tinysrgb&w=1200",
-    title: "Proven Technical Excellence",
-    subtitle: "Experienced engineers delivering quality solutions",
-    description:
-      "Our expert development team builds secure, scalable, and high-performance software solutions using modern technologies and industry best practices.",
-    highlights:
-      "Expert Developers • Agile Delivery • Quality Assurance • Modern Tech Stack",
-  },
-
-  {
-    icon: Globe,
-    image:
-      "https://images.pexels.com/photos/3184338/pexels-photo-3184338.jpeg?auto=compress&cs=tinysrgb&w=1200",
-    title: "Customer-First Development",
-    subtitle: "Focused on your business success",
-    description:
-      "We collaborate closely with clients at every stage of development to ensure transparency, faster delivery, and measurable business outcomes.",
-    highlights:
-      "Dedicated Support • Transparent Communication • Strategic Partnership • Client Success",
-  },
-
-  {
-    icon: Smartphone,
-    image:
-      "https://images.pexels.com/photos/590020/pexels-photo-590020.jpeg?auto=compress&cs=tinysrgb&w=1200",
-    title: "Scalable Growth Solutions",
-    subtitle: "Built for today and ready for tomorrow",
-    description:
-      "Every solution is designed with scalability, security, and performance in mind, helping businesses grow confidently without technology limitations.",
-    highlights:
-      "Cloud Ready • Secure Architecture • High Performance • Future Scalability",
-  },
-
-  {
-    icon: BrainCircuit,
-    image:
-      "https://images.pexels.com/photos/8386434/pexels-photo-8386434.jpeg?auto=compress&cs=tinysrgb&w=1200",
-    title: "Innovation & AI Expertise",
-    subtitle: "Leveraging technology for competitive advantage",
-    description:
-      "We utilize AI, automation, and emerging technologies to streamline operations, improve efficiency, and accelerate digital transformation.",
-    highlights:
-      "Artificial Intelligence • Automation • Data Intelligence • Digital Innovation",
-  },
-];
+  const features = [ { icon: Code2, title: "Proven Technical Excellence", subtitle: "Experienced engineers delivering quality solutions", description: "Our expert development team builds secure, scalable, and high-performance software solutions using modern technologies and industry best practices.", highlights: "Expert Developers • Agile Delivery • Quality Assurance • Modern Tech Stack", gradient: "from-blue-50 via-white to-cyan-50", }, { icon: Globe, title: "Customer-First Development", subtitle: "Focused on your business success", description: "We collaborate closely with clients at every stage of development to ensure transparency, faster delivery, and measurable business outcomes.", highlights: "Dedicated Support • Transparent Communication • Strategic Partnership • Client Success", gradient: "from-cyan-50 via-white to-blue-50", }, { icon: Smartphone, title: "Scalable Growth Solutions", subtitle: "Built for today and ready for tomorrow", description: "Every solution is designed with scalability, security, and performance in mind, helping businesses grow confidently without technology limitations.", highlights: "Cloud Ready • Secure Architecture • High Performance • Future Scalability", gradient: "from-indigo-50 via-white to-blue-50", }, { icon: BrainCircuit, title: "Innovation & AI Expertise", subtitle: "Leveraging technology for competitive advantage", description: "We utilize AI, automation, and emerging technologies to streamline operations, improve efficiency, and accelerate digital transformation.", highlights: "Artificial Intelligence • Automation • Data Intelligence • Digital Innovation", gradient: "from-sky-50 via-white to-cyan-50", }, ];
   return (
     <section
       id="why-us"
@@ -164,125 +116,7 @@ const WhyUs: React.FC = () => {
           </div>
 
           {/* Cards */}
-          <div className="grid grid-cols-2 gap-16 relative z-10">
-
-            {features.map((item, index) => {
-              const Icon = item.icon;
-
-              return (
-               <Reveal key={index} delay={index * 150}>
-  <div
-    className={`
-      group
-      relative
-      h-[360px]
-      overflow-hidden
-      rounded-3xl
-      bg-white/80
-      backdrop-blur-xl
-      border
-      border-white
-      shadow-xl
-      transition-all
-      duration-500
-      hover:-translate-y-3
-      hover:shadow-blue-500/20
-
-      ${index === 0 ? "mr-52" : ""}
-      ${index === 1 ? "ml-52" : ""}
-      ${index === 2 ? "mr-52 mt-32" : ""}
-      ${index === 3 ? "ml-52 mt-32" : ""}
-    `}
-  >
-    {/* Background Image */}
-  <div className="absolute inset-0 overflow-hidden">
-  <img
-    src={item.image}
-    alt={item.title}
-    className="
-      w-full
-      h-full
-      transition-all
-      duration-700
-    "
-  />
-
-  <div className="absolute inset-0 bg-white/40" />
-</div>
-
-    {/* Front Side */}
-    <div
-      className="
-        absolute
-        inset-0
-        z-10
-        flex
-        flex-col
-        items-center
-        justify-center
-        text-center
-        p-8
-        transition-all
-        duration-500
-        group-hover:-translate-y-full
-        group-hover:opacity-0
-      "
-    >
-      
-      <h3 className="text-3xl font-bold text-slate-900 mb-3">
-        {item.title}
-      </h3>
-
-    </div>
-
-    {/* Hover Side */}
-    <div
-      className="
-        absolute
-        inset-0
-        z-20
-        bg-gradient-to-br
-        from-blue-600
-        via-blue-500
-        to-cyan-500
-        p-8
-        text-white
-        translate-y-full
-        group-hover:translate-y-0
-        transition-all
-        duration-500
-        flex
-        flex-col
-        justify-center
-      "
-    >
-      <Icon className="w-10 h-10 mb-5 text-white" />
-
-      <h3 className="text-2xl font-bold mb-3">
-        {item.title}
-      </h3>
-
-      <p className="text-white/90 text-sm leading-relaxed mb-5">
-        {item.description}
-      </p>
-
-      <div className="border-t border-white/20 pt-4">
-        <p className="text-xs uppercase tracking-widest mb-2 text-white/70">
-          Key Highlights
-        </p>
-
-        <p className="text-sm text-white/90 leading-relaxed">
-          {item.highlights}
-        </p>
-      </div>
-    </div>
-  </div>
-</Reveal>
-              );
-            })}
-          </div>
-        </div>
-
+          <div className="grid grid-cols-2 gap-16 relative z-10"> {features.map((item, index) => { const Icon = item.icon; return ( <Reveal key={index} delay={index * 150}> <div className={` group relative h-[360px] overflow-hidden rounded-3xl bg-gradient-to-br ${item.gradient} backdrop-blur-xl border border-blue-100 shadow-[0_20px_60px_rgba(59,130,246,0.12)] transition-all duration-500 hover:-translate-y-3 hover:shadow-[0_30px_80px_rgba(59,130,246,0.25)] ${index === 0 ? "mr-52" : ""} ${index === 1 ? "ml-52" : ""} ${index === 2 ? "mr-52 mt-32" : ""} ${index === 3 ? "ml-52 mt-32" : ""} `} > {/* Front Side */} <div className=" absolute inset-0 z-10 flex flex-col items-center justify-center text-center p-10 transition-all duration-500 group-hover:-translate-y-full group-hover:opacity-0 " > <div className="w-20 h-20 rounded-2xl bg-gradient-to-br from-blue-600 to-cyan-500 flex items-center justify-center mb-6 shadow-lg"> <Icon className="w-10 h-10 text-white" /> </div> <h3 className="text-3xl font-bold text-slate-900 mb-3"> {item.title} </h3> <p className="text-slate-600 max-w-xs leading-relaxed"> {item.subtitle} </p> </div> {/* Hover Side */} <div className=" absolute inset-0 z-20 bg-gradient-to-br from-blue-600 via-blue-500 to-cyan-500 p-8 text-white translate-y-full group-hover:translate-y-0 transition-all duration-500 flex flex-col justify-center " > <Icon className="w-10 h-10 mb-5 text-white" /> <h3 className="text-2xl font-bold mb-3"> {item.title} </h3> <p className="text-white/90 text-sm leading-relaxed mb-5"> {item.description} </p> <div className="border-t border-white/20 pt-4"> <p className="text-xs uppercase tracking-widest mb-2 text-white/70"> Key Highlights </p> <p className="text-sm text-white/90 leading-relaxed"> {item.highlights} </p> </div> </div> </div> </Reveal> ); })} </div>
         {/* Mobile */}
         <div className="lg:hidden grid gap-6">
 
@@ -314,7 +148,7 @@ const WhyUs: React.FC = () => {
             );
           })}
         </div>
-
+        </div>
       </div>
     </section>
   );

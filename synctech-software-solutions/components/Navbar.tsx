@@ -53,7 +53,7 @@ const Navbar: React.FC = () => {
 
             <Link to="/" className="flex items-center gap-3 group">
               <img
-                src="https://res.cloudinary.com/dij2x0ixo/image/upload/e_background_removal/f_png/v1782032673/SyncTechWhiteLogo_bt3s0u.jpg"
+                src="https://res.cloudinary.com/dij2x0ixo/image/upload/e_background_removal/f_png/v1782032673/SyncTechWhiteLogo_bt3s0u.webp"
                 alt="SyncTechn Logo"
                 className="w-15 h-15"
               />

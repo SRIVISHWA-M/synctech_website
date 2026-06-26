@@ -36,9 +36,9 @@ const categories = [
     pattern: 'radial-gradient(circle at 100% 0%, rgba(6, 182, 212, 0.05) 0%, transparent 50%)',
     tech: [
       { name: 'SEMrush', desc: 'Online visibility management platform and content marketing SaaS.', logo: 'https://cdn.simpleicons.org/semrush/FF642D' },
-      { name: 'Ahrefs', desc: 'SEO software suite for link building, keyword research, and site audits.', logo: 'https://res.cloudinary.com/dzf7f5ag3/image/upload/v1782131365/primary-light-S5ZNO3MC_vxchur.png' },
+      { name: 'Ahrefs', desc: 'SEO software suite for link building, keyword research, and site audits.', logo: 'https://res.cloudinary.com/dzf7f5ag3/image/upload/v1782131365/primary-light-S5ZNO3MC_vxchur.webp' },
       { name: 'Moz', desc: 'Inbound marketing and analytics software for SEO campaigns.', logo: 'https://res.cloudinary.com/dzf7f5ag3/image/upload/v1782131454/Moz-Logo_s7l4li.png' },
-      { name: 'Screaming Frog', desc: 'Website crawler that helps improve onsite SEO by extracting data.', logo: 'https://res.cloudinary.com/dzf7f5ag3/image/upload/v1782131568/screaming-frog-social_wmskn6.png' },
+      { name: 'Screaming Frog', desc: 'Website crawler that helps improve onsite SEO by extracting data.', logo: 'https://res.cloudinary.com/dzf7f5ag3/image/upload/v1782131568/screaming-frog-social_wmskn6.webp' },
     ]
   },
   {

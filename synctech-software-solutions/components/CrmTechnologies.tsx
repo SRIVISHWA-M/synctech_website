@@ -9,10 +9,10 @@ const categories = [
     bg: 'bg-gradient-to-br from-indigo-50 to-white',
     pattern: 'radial-gradient(circle at 100% 100%, rgba(79, 70, 229, 0.05) 0%, transparent 50%)',
     tech: [
-      { name: 'Salesforce', desc: 'Leading cloud-based customer relationship management platform.', logo: 'https://res.cloudinary.com/dzf7f5ag3/image/upload/v1782132429/Salesforce.com_logo.svg_y4dpwa.png' },
+      { name: 'Salesforce', desc: 'Leading cloud-based customer relationship management platform.', logo: 'https://res.cloudinary.com/dzf7f5ag3/image/upload/v1782132429/Salesforce.com_logo.svg_y4dpwa.webp' },
       { name: 'HubSpot CRM', desc: 'Inbound marketing, sales, and CRM platform.', logo: 'https://cdn.simpleicons.org/hubspot/FF7A59' },
       { name: 'Zoho CRM', desc: 'Customer relationship management for growing businesses.', logo: 'https://cdn.simpleicons.org/zoho/E3242B' },
-      { name: 'Microsoft Dynamics 365', desc: 'Enterprise CRM and business management platform.', logo: 'https://res.cloudinary.com/dzf7f5ag3/image/upload/v1782132451/684ac35abde0813cbb1c7854_Capture_d_e%CC%81cran_le_2025-06-12_a%CC%80_14.08.36_i6bsjx.png' },
+      { name: 'Microsoft Dynamics 365', desc: 'Enterprise CRM and business management platform.', logo: 'https://res.cloudinary.com/dzf7f5ag3/image/upload/v1782132451/684ac35abde0813cbb1c7854_Capture_d_e%CC%81cran_le_2025-06-12_a%CC%80_14.08.36_i6bsjx.webp' },
     ]
   },
   {
@@ -35,10 +35,10 @@ const categories = [
     bg: 'bg-gradient-to-br from-emerald-50 to-white',
     pattern: 'radial-gradient(circle at 100% 0%, rgba(16, 185, 129, 0.05) 0%, transparent 50%)',
     tech: [
-      { name: 'Power BI', desc: 'Business intelligence and analytics platform.', logo: 'https://res.cloudinary.com/dzf7f5ag3/image/upload/v1782132525/download_bzyffx.png' },
+      { name: 'Power BI', desc: 'Business intelligence and analytics platform.', logo: 'https://res.cloudinary.com/dzf7f5ag3/image/upload/v1782132525/download_bzyffx.webp' },
       { name: 'Google Analytics', desc: 'Website traffic and user behavior analytics.', logo: 'https://cdn.simpleicons.org/googleanalytics/F9AB00' },
       { name: 'Looker Studio', desc: 'Interactive reporting and data visualization.', logo: 'https://cdn.simpleicons.org/looker/4285F4' },
-      { name: 'CRM Dashboards', desc: 'Real-time customer and sales performance tracking.', logo: 'https://res.cloudinary.com/dzf7f5ag3/image/upload/v1782132633/Zoho_CRM__application_keojnr.svg' },
+      { name: 'CRM Dashboards', desc: 'Real-time customer and sales performance tracking.', logo: 'https://res.cloudinary.com/dzf7f5ag3/image/upload/v1782132633/Zoho_CRM__application_keojnr.webp' },
     ]
   },
   {
@@ -48,8 +48,8 @@ const categories = [
     bg: 'bg-gradient-to-br from-sky-50 to-white',
     pattern: 'radial-gradient(circle at 0% 0%, rgba(14, 165, 233, 0.05) 0%, transparent 50%)',
     tech: [
-      { name: 'Microsoft Azure', desc: 'Enterprise cloud platform for applications and infrastructure.', logo: 'https://swimburger.net/media/ppnn3pcl/azure.png' },
-      { name: 'AWS', desc: 'Scalable cloud computing services and infrastructure.', logo: 'https://upload.wikimedia.org/wikipedia/commons/9/93/Amazon_Web_Services_Logo.svg' },
+      { name: 'Microsoft Azure', desc: 'Enterprise cloud platform for applications and infrastructure.', logo: 'https://swimburger.net/media/ppnn3pcl/azure.webp' },
+      { name: 'AWS', desc: 'Scalable cloud computing services and infrastructure.', logo: 'https://upload.wikimedia.org/wikipedia/commons/9/93/Amazon_Web_Services_Logo.webp' },
       { name: 'Google Cloud', desc: 'Cloud platform for analytics, AI, and infrastructure.', logo: 'https://cdn.simpleicons.org/googlecloud/4285F4' },
       { name: 'Cloud CRM Platforms', desc: 'Cloud-native customer relationship management solutions.', logo: 'https://cdn.simpleicons.org/icloud/3693F4' },
     ]
