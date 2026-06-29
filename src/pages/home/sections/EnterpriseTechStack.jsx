@@ -60,6 +60,45 @@ const categories = [
   },
 ];
 
+function TechIcon({ src, alt, className }) {
+  if (src.includes("cloudinary.com") || src.includes("wikimedia.org") || src.includes("swimburger.net")) {
+    return (
+      <img
+        src={src}
+        alt={alt}
+        className={className}
+      />
+    );
+  }
+
+  const match = src.match(/cdn\.simpleicons\.org\/([^/]+)(?:\/([^/]+))?/);
+  if (match) {
+    const slug = match[1];
+    let color = match[2] || "currentColor";
+    if (color !== "currentColor" && color !== "black" && color !== "white" && !color.startsWith("#")) {
+      color = `#${color}`;
+    }
+    return (
+      <div
+        className={className}
+        style={{
+          backgroundColor: color,
+          WebkitMask: `url(https://cdn.jsdelivr.net/npm/simple-icons@11.10.0/icons/${slug}.svg) no-repeat center / contain`,
+          mask: `url(https://cdn.jsdelivr.net/npm/simple-icons@11.10.0/icons/${slug}.svg) no-repeat center / contain`,
+        }}
+      />
+    );
+  }
+
+  return (
+    <img
+      src={src}
+      alt={alt}
+      className={className}
+    />
+  );
+}
+
 export default function EnterpriseTechStack() {
   const containerRef = useRef(null);
   const isInView = useInView(containerRef, { once: false, margin: "-20%" });
@@ -270,7 +309,7 @@ export default function EnterpriseTechStack() {
                         )}
 
                         <div className="w-28 h-28 mb-6 flex items-center justify-center relative z-10">
-                          <img
+                          <TechIcon
                             src={tech.icon}
                             alt={tech.name}
                             className="w-full h-full object-contain filter drop-shadow-sm"
@@ -325,7 +364,7 @@ export default function EnterpriseTechStack() {
                           className="flex items-center gap-5 bg-white border border-[#E2E8F0] rounded-[20px] p-5 shadow-[0_4px_20px_rgba(0,0,0,0.03)] hover:shadow-[0_10px_30px_rgba(79,70,229,0.1)] hover:-translate-y-1 hover:border-indigo-200 transition-all duration-300 group"
                         >
                           <div className="w-14 h-14 bg-white rounded-2xl p-2 border border-slate-100 shadow-sm group-hover:scale-110 group-hover:shadow-md transition-all duration-300">
-                            <img
+                            <TechIcon
                               src={tech.icon}
                               alt={tech.name}
                               className="w-full h-full object-contain"

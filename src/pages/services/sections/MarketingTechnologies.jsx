@@ -1,6 +1,45 @@
 import React, { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 
+function TechIcon({ src, alt, className }) {
+  if (src.includes("cloudinary.com") || src.includes("wikimedia.org") || src.includes("swimburger.net")) {
+    return (
+      <img
+        src={src}
+        alt={alt}
+        className={className}
+      />
+    );
+  }
+
+  const match = src.match(/cdn\.simpleicons\.org\/([^/]+)(?:\/([^/]+))?/);
+  if (match) {
+    const slug = match[1];
+    let color = match[2] || "currentColor";
+    if (color !== "currentColor" && color !== "black" && color !== "white" && !color.startsWith("#")) {
+      color = `#${color}`;
+    }
+    return (
+      <div
+        className={className}
+        style={{
+          backgroundColor: color,
+          WebkitMask: `url(https://cdn.jsdelivr.net/npm/simple-icons@11.10.0/icons/${slug}.svg) no-repeat center / contain`,
+          mask: `url(https://cdn.jsdelivr.net/npm/simple-icons@11.10.0/icons/${slug}.svg) no-repeat center / contain`,
+        }}
+      />
+    );
+  }
+
+  return (
+    <img
+      src={src}
+      alt={alt}
+      className={className}
+    />
+  );
+}
+
 const categories = [
   {
     id: "analytics",
@@ -313,15 +352,11 @@ const MarketingTechnologies = () => {
                           key={i}
                           className="w-8 h-8 rounded-full bg-slate-50 border border-slate-100 flex items-center justify-center p-1.5 shadow-sm"
                         >
-                          <img
-                            src={t.logo}
-                            alt={t.name}
-                            className="w-full h-full object-contain"
-                            onError={(e) =>
-                              (e.currentTarget.src =
-                                "https://cdn.simpleicons.org/google/000")
-                            }
-                          />
+                           <TechIcon
+                             src={t.logo}
+                             alt={t.name}
+                             className="w-full h-full object-contain"
+                           />
                         </div>
                       ))}
                       {category.tech.length > 3 && (
@@ -400,15 +435,11 @@ const MarketingTechnologies = () => {
                         <div
                           className={`w-20 h-20 mb-6 flex items-center justify-center transition-transform duration-700 ${isCenter ? "scale-110 drop-shadow-md" : "scale-90 grayscale opacity-70"}`}
                         >
-                          <img
-                            src={tech.logo}
-                            alt={tech.name}
-                            className="w-full h-full object-contain"
-                            onError={(e) =>
-                              (e.currentTarget.src =
-                                "https://cdn.simpleicons.org/google/000")
-                            }
-                          />
+                           <TechIcon
+                             src={tech.logo}
+                             alt={tech.name}
+                             className="w-full h-full object-contain"
+                           />
                         </div>
 
                         {/* Platform Name */}
