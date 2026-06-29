@@ -7,10 +7,13 @@ const NAV_ITEMS = [
     label: "Services",
     href: "services",
     subItems: [
+      {label: "Software Development", href:"services/SoftwareDevelopment"},
       { label: "Mobile Development", href: "services/MobileDevelopment" },
       { label: "Web Development", href: "services/WebDevelopment" },
       { label: "Digital Marketing", href: "services/DigitalMarketing" },
       { label: "CRM Solutions", href: "services/crm" },
+      {label:"AISolutions" ,href:"services/AISolutions"}
+      
     ],
   },
   { label: "Process", href: "#process" },

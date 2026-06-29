@@ -9,6 +9,8 @@ import CookiesPolicy from "./pages/CookiesPolicy";
 import ServicesLandingPage from "./pages/ServicesLandingPage";
 import MobileDevelopment from "./pages/services/MobileDevelopment";
 import WebDevelopment from "./pages/services/WebDevelopment";
+import SoftwareDevelopment from "./pages/services/SoftwareDevelopment";
+import AISolutions from "./pages/services/AISolutions"
 import DigitalMarketing from "./pages/services/DigitalMarketing";
 import CRMSolutions from "./pages/services/CRMSolutions";
 import Careers from "./pages/Careers";
@@ -47,6 +49,8 @@ function App() {
             <Route path="MobileDevelopment" element={<MobileDevelopment />} />
             <Route path="WebDevelopment" element={<WebDevelopment />} />
             <Route path="DigitalMarketing" element={<DigitalMarketing />} />
+            <Route path="SoftwareDevelopment" element={<SoftwareDevelopment/>}/>
+            <Route path="AISolutions" element={<AISolutions/>}/>
             <Route path="crm" element={<CRMSolutions />} />
           </Route>
           <Route path="/Careers" element={<Careers />} />
