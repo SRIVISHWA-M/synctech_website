@@ -24,7 +24,7 @@ import {
   LineChart,
   Share2,
 
-  // Part 3
+  // Part3
   HelpCircle,
   Sparkles,
   Zap,
@@ -367,7 +367,7 @@ export default function DigitalMarketing() {
     setIsScanning(true);
     setScanComplete(false);
     setScanProgress(0);
-    
+
     const interval = setInterval(() => {
       setScanProgress(prev => {
         if (prev >= 100) {
@@ -527,22 +527,20 @@ export default function DigitalMarketing() {
               <button
                 type="button"
                 onClick={() => setActiveTab("simulator")}
-                className={`px-5 py-2.5 rounded-lg text-sm font-bold transition-all ${
-                  activeTab === "simulator"
+                className={`px-5 py-2.5 rounded-lg text-sm font-bold transition-all ${activeTab === "simulator"
                     ? "bg-white text-blue-600 shadow"
                     : "text-slate-600 hover:text-slate-800"
-                }`}
+                  }`}
               >
                 1. Campaign ROI Budget Simulator
               </button>
               <button
                 type="button"
                 onClick={() => setActiveTab("scanner")}
-                className={`px-5 py-2.5 rounded-lg text-sm font-bold transition-all ${
-                  activeTab === "scanner"
+                className={`px-5 py-2.5 rounded-lg text-sm font-bold transition-all ${activeTab === "scanner"
                     ? "bg-white text-blue-600 shadow"
                     : "text-slate-600 hover:text-slate-800"
-                }`}
+                  }`}
               >
                 2. Technical SEO Scanner
               </button>
@@ -555,7 +553,7 @@ export default function DigitalMarketing() {
                 {/* Inputs Left */}
                 <div className="lg:col-span-7">
                   <h3 className="text-lg font-bold text-slate-950 mb-6 uppercase tracking-wider text-xs">Configure Ad Channel & Budget:</h3>
-                  
+
                   {/* Select Channel */}
                   <div className="mb-8">
                     <span className="block text-sm font-bold text-slate-700 mb-3">Choose Target Channel</span>
@@ -565,11 +563,10 @@ export default function DigitalMarketing() {
                           key={item}
                           type="button"
                           onClick={() => setChannel(item)}
-                          className={`py-3.5 rounded-xl border text-xs font-bold capitalize transition-all ${
-                            channel === item
+                          className={`py-3.5 rounded-xl border text-xs font-bold capitalize transition-all ${channel === item
                               ? "bg-blue-600 border-blue-600 text-white shadow-md shadow-blue-200"
                               : "bg-white border-slate-200 text-slate-600 hover:border-slate-300"
-                          }`}
+                            }`}
                         >
                           {item === "seo" ? "Organic SEO" : item + " PPC Ads"}
                         </button>
