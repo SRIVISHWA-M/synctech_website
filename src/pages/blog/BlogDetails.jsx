@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useMemo } from "react";
 import { useParams, Link, useNavigate } from "react-router-dom";
 import {
   Calendar,
@@ -29,9 +29,11 @@ export default function BlogDetails() {
 
   const blog = blogs[id];
 
-  const headings = blog
-    ? blog.content.filter((block) => block.type === "heading")
-    : [];
+  const headings = useMemo(() => {
+    return blog
+      ? blog.content.filter((block) => block.type === "heading")
+      : [];
+  }, [blog]);
 
   useEffect(() => {
     if (!blog || headings.length === 0) return;

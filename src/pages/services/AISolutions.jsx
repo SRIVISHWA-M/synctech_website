@@ -31,6 +31,8 @@ import {
   DollarSign,
   Clock,
   Smartphone,
+  Brain,
+  Lock,
 } from "lucide-react";
 
 import { Link } from "react-router-dom";
